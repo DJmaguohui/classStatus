@@ -12,7 +12,7 @@
         <el-form-item prop="password" :rules="[
       { required: true, message: '密码不能为空',trigger:'blur'}
     ]">
-          <el-input suffix-icon="el-icon-lock" v-model="numberValidateForm.password"></el-input>
+          <el-input type="password" suffix-icon="el-icon-lock" v-model="numberValidateForm.password"></el-input>
         </el-form-item>
         <el-form-item>
           <el-button type="primary" @click="submitForm('numberValidateForm')">提交</el-button>
@@ -45,6 +45,7 @@ export default {
             console.log(res)
             if (res.data.status == 0) {
               this.$message.success(res.data.msg)
+              this.$store.commit('getUsername',res.data.data.username)
               this.$router.push('/home')
             } else {
               this.$message.error(res.data.msg)

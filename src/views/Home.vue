@@ -1,22 +1,107 @@
 <template>
   <div class="home">
     <el-container>
-      <el-header>Header</el-header>
+      <el-header>
+        <h3>MMALL ADMIN</h3>
+        <div>
+          <span>欢迎，{{$store.state.username}}</span>
+          <a href="#" @click="loginOut">退出</a>
+        </div>
+      </el-header>
       <el-container>
-        <el-aside width="200px">Aside</el-aside>
-        <el-main>Main</el-main>
+        <el-aside width="200px">
+          <el-menu default-active="2" class="el-menu-vertical-demo" background-color="#999" text-color="#000" active-text-color="#00b2b2" router :collapse-transition="false" :unique-opened="true">
+            <el-submenu index="item.path">
+              <template slot="title">
+                <i class="icon[item.id]"></i>
+                <span>888888</span>
+              </template>
+              <el-menu-item index="it.path">
+                <i class="el-icon-menu"></i>
+                <span>0000</span>
+              </el-menu-item>
+            </el-submenu>
+          </el-menu>
+
+        </el-aside>
+        <el-main>
+          <router-view></router-view>
+        </el-main>
       </el-container>
     </el-container>
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  methods: {
+    loginOut() {
+      this.$axios.LoginOut().then((res) => {
+        console.log(res)
+        if (res.data.status == 0) {
+          this.$message.success('退出成功')
+          this.$router.push('/')
+        } else {
+          this.$message.error('退出失败')
+        }
+      })
+    },
+  },
+}
 </script>
 
 <style lang="scss" scoped>
-.home{
+.home {
   width: 100%;
   height: 100%;
+  & > .el-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    & > .el-header {
+      width: 100%;
+      background-color: #999;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      & > h3 {
+        color: #fff;
+      }
+    }
+    & > .el-container {
+      width: 100%;
+      flex: 1;
+      & > .el-aside {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        background: #999;
+        & > .el-menu > span {
+          display: block;
+          width: 100%;
+          height: 20px;
+          background-color: #999;
+          text-align: center;
+        }
+        i {
+          font-size: 18px;
+          margin-right: 10px;
+        }
+
+        & > .el-menu {
+          height: 100%;
+        }
+        .el-menu-vertical-demo {
+          border: none;
+        }
+      }
+      & > .el-main {
+        width: 100%;
+        background-color: red;
+        padding: 0;
+      }
+    }
+  }
 }
 </style>

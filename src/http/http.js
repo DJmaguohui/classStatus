@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const Server = axios.create({
-	baseURL: 'http://admintest.happymmall.com/manage',
+	baseURL: 'http://admintest.happymmall.com',
 	timeout: 5000,
 })
 
