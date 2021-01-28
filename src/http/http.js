@@ -2,6 +2,7 @@ import axios from 'axios'
 
 const Server = axios.create({
 	baseURL: 'http://admintest.happymmall.com',
+	// withCredentials: true,
 	timeout: 5000,
 })
 

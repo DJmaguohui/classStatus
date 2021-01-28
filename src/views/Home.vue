@@ -10,19 +10,33 @@
       </el-header>
       <el-container>
         <el-aside width="200px">
-          <el-menu default-active="2" class="el-menu-vertical-demo" background-color="#999" text-color="#000" active-text-color="#00b2b2" router :collapse-transition="false" :unique-opened="true">
-            <el-submenu index="item.path">
+          <el-menu default-active="2" class="el-menu-vertical-demo" background-color="#999" text-color="#000099" active-text-color="#00b2b2" router :collapse-transition="false" :unique-opened="true">
+             <el-menu-item index="">
+               <i class="el-icon-s-home"></i>
+                <span>Home</span>
+              </el-menu-item>
+            <el-submenu index="1">
               <template slot="title">
-                <i class="icon[item.id]"></i>
-                <span>888888</span>
+                <i class="el-icon-s-data"></i>
+                <span>商品</span>
               </template>
-              <el-menu-item index="it.path">
-                <i class="el-icon-menu"></i>
-                <span>0000</span>
+              <el-menu-item index="/shop">
+                <span>商品管理</span>
+              </el-menu-item>
+              <el-menu-item index="">
+                <span>品类管理</span>
+              </el-menu-item>
+            </el-submenu>
+            <el-submenu index="2">
+              <template slot="title">
+                <i class="el-icon-edit"></i>
+                <span>订单</span>
+              </template>
+              <el-menu-item index="">
+                <span>订单管理</span>
               </el-menu-item>
             </el-submenu>
           </el-menu>
-
         </el-aside>
         <el-main>
           <router-view></router-view>
@@ -98,7 +112,6 @@ export default {
       }
       & > .el-main {
         width: 100%;
-        background-color: red;
         padding: 0;
       }
     }

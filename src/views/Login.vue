@@ -45,7 +45,7 @@ export default {
             console.log(res)
             if (res.data.status == 0) {
               this.$message.success(res.data.msg)
-              this.$store.commit('getUsername',res.data.data.username)
+              this.$store.commit('getUsername', res.data.data.username)
               this.$router.push('/home')
             } else {
               this.$message.error(res.data.msg)

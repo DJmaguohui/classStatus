@@ -18,9 +18,17 @@ function LoginOut() {
 		method: 'post',
 	})
 }
+//获取商品列表
+function shoplist(data) {
+	return $axios({
+		url: Api.shopList + data,
+		method: 'get',
+	})
+}
 
 //导出函数封装请求
 export default {
 	Login,
 	LoginOut,
+	shoplist,
 }
