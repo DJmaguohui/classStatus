@@ -11,7 +11,7 @@
       <el-container>
         <el-aside width="200px">
           <el-menu default-active="2" class="el-menu-vertical-demo" background-color="#999" text-color="#000099" active-text-color="#00b2b2" router :collapse-transition="false" :unique-opened="true">
-             <el-menu-item index="">
+             <el-menu-item index="/about">
                <i class="el-icon-s-home"></i>
                 <span>Home</span>
               </el-menu-item>
@@ -23,7 +23,7 @@
               <el-menu-item index="/shop">
                 <span>商品管理</span>
               </el-menu-item>
-              <el-menu-item index="">
+              <el-menu-item index="/category">
                 <span>品类管理</span>
               </el-menu-item>
             </el-submenu>
@@ -32,7 +32,7 @@
                 <i class="el-icon-edit"></i>
                 <span>订单</span>
               </template>
-              <el-menu-item index="">
+              <el-menu-item index="/order">
                 <span>订单管理</span>
               </el-menu-item>
             </el-submenu>
@@ -113,6 +113,7 @@ export default {
       & > .el-main {
         width: 100%;
         padding: 0;
+        box-sizing: border-box;
       }
     }
   }

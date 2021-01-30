@@ -21,7 +21,21 @@ function LoginOut() {
 //获取商品列表
 function shoplist(data) {
 	return $axios({
-		url: Api.shopList + data,
+		url: Api.shopList + qs.stringify(data),
+		method: 'get',
+	})
+}
+//查询switch
+function Switch(data) {
+	return $axios({
+		url: Api.switch + qs.stringify(data),
+		method: 'get',
+	})
+}
+//上下架
+function By(data) {
+	return $axios({
+		url: Api.by + qs.stringify(data),
 		method: 'get',
 	})
 }
@@ -31,4 +45,6 @@ export default {
 	Login,
 	LoginOut,
 	shoplist,
+  Switch,
+  By,
 }

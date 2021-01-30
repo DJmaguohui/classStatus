@@ -4,5 +4,9 @@ module.exports={
   //退出登录
   loginOut:"/user/logout.do",
   //商品管理列表
-  shopList:"/manage/product/list.do?pageNum:"
+  shopList:"/manage/product/list.do?",
+  //查询
+  switch:"/manage/product/search.do?listType=search&pageNum=1&",
+  //上下架
+  by:"/manage/product/set_sale_status.do?"
 }
