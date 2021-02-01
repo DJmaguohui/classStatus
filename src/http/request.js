@@ -39,6 +39,13 @@ function By(data) {
 		method: 'get',
 	})
 }
+//查看
+function Details(data){
+	return $axios({
+		url: Api.details + qs.stringify(data),
+		method: 'get',
+	})
+}
 
 //导出函数封装请求
 export default {
@@ -47,4 +54,5 @@ export default {
 	shoplist,
   Switch,
   By,
+  Details
 }

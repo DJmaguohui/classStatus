@@ -8,5 +8,7 @@ module.exports={
   //查询
   switch:"/manage/product/search.do?listType=search&pageNum=1&",
   //上下架
-  by:"/manage/product/set_sale_status.do?"
+  by:"/manage/product/set_sale_status.do?",
+  //查看
+  details:"/manage/product/detail.do?",
 }

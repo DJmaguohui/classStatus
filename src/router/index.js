@@ -34,6 +34,18 @@ const routes = [
 				name: '商品管理',
 				component: () => import('../components/ShoopList.vue'),
 			},
+      //商品详情
+			{
+				path: '/detail',
+				name: '商品详情',
+				component: () => import('../components/Details.vue'),
+			},
+      //商品修改
+			{
+				path: '/updata',
+				name: '商品管理--商品修改',
+				component: () => import('../components/Updata.vue'),
+			},
       //品类管理
 			{
 				path: '/category',

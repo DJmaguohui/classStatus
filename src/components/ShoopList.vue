@@ -39,9 +39,9 @@
         </template>
       </el-table-column>
       <el-table-column prop="address" label="操作">
-        <template>
-          <el-link type="primary">查看</el-link>
-          <el-link type="primary">编辑</el-link>
+        <template slot-scope="scope">
+          <el-link type="primary" @click="$router.push(`/detail?id=${scope.row.id}`)">查看</el-link>
+          <el-link type="primary" @click="$router.push(`/updata?id=${scope.row.id}`)">编辑</el-link>
         </template>
       </el-table-column>
     </el-table>
@@ -153,11 +153,15 @@ export default {
   box-sizing: border-box;
   padding: 10px;
   overflow: hidden;
+  .switch {
+    width: 100%;
+    margin:20px 0px;
+    .el-input {
+      margin: 0 10px;
+    }
+  }
 }
 .el-link:nth-of-type(2) {
   margin-left: 5px;
-}
-.el-input {
-  margin: 0 10px;
 }
 </style>

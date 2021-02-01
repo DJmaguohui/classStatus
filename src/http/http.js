@@ -8,6 +8,7 @@ const Server = axios.create({
 
 //请求拦截器
 Server.interceptors.request.use((config) => {
+  // console.log(document.cookie)
 	return config
 })
 
