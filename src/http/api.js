@@ -11,4 +11,10 @@ module.exports={
   by:"/manage/product/set_sale_status.do?",
   //查看
   details:"/manage/product/detail.do?",
+  //上传图片
+  upload:"/manage/product/upload.do",
+  //修改完成
+Updata:"/manage/product/save.do?",
+//品类管理
+category:"/manage/category/get_category.do?categoryId=0"
 }

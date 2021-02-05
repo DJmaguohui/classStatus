@@ -43,17 +43,18 @@
 
       <div>
         <h5>商品图片</h5>
-        <el-upload class="upload-demo" action="http://admintest.happymmall.com/manage/product/upload.do" :on-change="handleChange" :headers="Cookie" :file-list="fileList">
+        <el-upload class="upload-demo" action="https://jsonplaceholder.typicode.com/posts/" show-file-list :http-request="handleChange">
           <el-button size="small" type="primary">点击上传</el-button>
-          <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>
         </el-upload>
       </div>
 
-      <div>
+      <div class="min_box">
         <h5>商品详情</h5>
-        <p v-html="obj.detail"></p>
+        <quill-editor v-model="obj.detail"></quill-editor>
       </div>
-
+      <div>
+        <el-button type="primary" @click="Updata">提交</el-button>
+      </div>
     </div>
   </div>
 </template>
@@ -63,8 +64,7 @@ export default {
   data() {
     return {
       obj: {},
-      fileList: [],
-      Cookie: { Cookie:  "JSESSIONID=B72BB3B8429895FF9535F5DD2A5B534E"},
+      Imageurl: '',
     }
   },
   mounted() {
@@ -75,15 +75,41 @@ export default {
     getData() {
       this.$axios.Details({ productId: this.$route.query.id }).then((res) => {
         console.log(res)
-        
         if (res.data.status == 0) {
           this.obj = res.data.data
         }
       })
     },
     //图片上传
-    handleChange(file, fileList) {
-      this.fileList = fileList.slice(-3)
+    handleChange(e) {
+      console.log(e.file)
+      let conent = e.file
+      let data = new FormData()
+      data.append('upload_file', conent)
+      this.$axios.upload(data).then((res) => {
+        // console.log(res)
+        this.Imageurl = res.data.data.url
+      })
+    },
+    Updata() {
+      var obj = {
+        categoryId: this.obj.categoryId,
+        name: this.obj.name,
+        subtitle: this.obj.subtitle,
+        subImages: this.Imageurl,
+        detail: this.obj.detail,
+        price: this.obj.price,
+        stock: this.obj.stock,
+        status: 1,
+        id: this.obj.id,
+      }
+      this.$axios.UpData(obj).then((res) => {
+        console.log(res)
+        if(res.data.status==0){
+          this.$message.success(res.data.data)
+          this.$router.push('/shop')
+        }
+      })
     },
   },
 }
@@ -98,7 +124,7 @@ export default {
     height: 90%;
     margin: 10px auto;
     & > div {
-      height: 60px;
+      height: 80px;
       display: flex;
       align-items: center;
       h5 {

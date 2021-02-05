@@ -46,7 +46,30 @@ function Details(data){
 		method: 'get',
 	})
 }
+//上传图片
+function upload(data){
+  return $axios({
+		url: Api.upload ,
+    method: 'post',
+    data:data
+	})
+}
 
+//修改完成
+function UpData(data){
+return $axios({
+  url:Api.Updata+qs.stringify(data),
+  method:"get",
+})
+}
+
+//获取品类数据
+function get_category(){
+return $axios({
+  url:Api.category,
+  method:"get",
+})
+}
 //导出函数封装请求
 export default {
 	Login,
@@ -54,5 +77,8 @@ export default {
 	shoplist,
   Switch,
   By,
-  Details
+  Details,
+  upload,
+  UpData,
+  get_category
 }
